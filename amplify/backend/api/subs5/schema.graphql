@@ -1,6 +1,14 @@
-type Note @model @auth(rules: [ { allow: public } ] ){
+type Sub @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Name: String
+  Price: String
+  Logo: String
+}
+
+type Note @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
   description: String
   image: String
 }
+ 

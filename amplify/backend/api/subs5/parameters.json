@@ -1,5 +1,6 @@
 {
   "AppSyncApiName": "subs5",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2024-01-06T18:13:32.926Z"
 }
