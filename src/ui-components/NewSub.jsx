@@ -7,9 +7,9 @@
 /* eslint-disable */
 import * as React from "react";
 import { useState } from "react";
+import { getOverrideProps, useNavigateAction } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createSub } from "../graphql/mutations";
-import { getOverrideProps } from "./utils";
 import MyIcon from "./MyIcon";
 import { Button, Flex, Text, TextField, View } from "@aws-amplify/ui-react";
 const client = generateClient();
@@ -27,6 +27,7 @@ export default function NewSub(props) {
     textFieldFourZeroFourSixFourFourFiveValue,
     setTextFieldFourZeroFourSixFourFourFiveValue,
   ] = useState("");
+  const frameFourFourFourOnClick = useNavigateAction({ type: "url", url: "/" });
   const buttonOnClick = async () => {
     await client.graphql({
       query: createSub.replaceAll("__typename", ""),
@@ -90,6 +91,9 @@ export default function NewSub(props) {
             shrink="0"
             position="relative"
             padding="0px 0px 0px 0px"
+            onClick={() => {
+              frameFourFourFourOnClick();
+            }}
             {...getOverrideProps(overrides, "Frame 444")}
           >
             <MyIcon

@@ -1,6 +1,54 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createSub = /* GraphQL */ `
+  mutation CreateSub(
+    $input: CreateSubInput!
+    $condition: ModelSubConditionInput
+  ) {
+    createSub(input: $input, condition: $condition) {
+      id
+      Name
+      Price
+      Logo
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateSub = /* GraphQL */ `
+  mutation UpdateSub(
+    $input: UpdateSubInput!
+    $condition: ModelSubConditionInput
+  ) {
+    updateSub(input: $input, condition: $condition) {
+      id
+      Name
+      Price
+      Logo
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteSub = /* GraphQL */ `
+  mutation DeleteSub(
+    $input: DeleteSubInput!
+    $condition: ModelSubConditionInput
+  ) {
+    deleteSub(input: $input, condition: $condition) {
+      id
+      Name
+      Price
+      Logo
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
 export const createNote = /* GraphQL */ `
   mutation CreateNote(
     $input: CreateNoteInput!

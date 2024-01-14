@@ -5,8 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { MyIconProps } from "./MyIcon";
-import { ButtonProps, FlexProps } from "@aws-amplify/ui-react";
+import { FlexProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -18,12 +17,13 @@ export declare type Variant = {
     overrides: EscapeHatchProps;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type NavBarOverridesProps = {
-    NavBar?: PrimitiveOverrideProps<FlexProps>;
-    MyIcon?: MyIconProps;
-    Button?: PrimitiveOverrideProps<ButtonProps>;
+export declare type MyComponentOverridesProps = {
+    MyComponent?: PrimitiveOverrideProps<ViewProps>;
+    Heading?: PrimitiveOverrideProps<FlexProps>;
+    Rating?: PrimitiveOverrideProps<FlexProps>;
+    Button?: PrimitiveOverrideProps<FlexProps>;
 } & EscapeHatchProps;
-export declare type NavBarProps = React.PropsWithChildren<Partial<FlexProps> & {
-    overrides?: NavBarOverridesProps | undefined | null;
+export declare type MyComponentProps = React.PropsWithChildren<Partial<ViewProps> & {
+    overrides?: MyComponentOverridesProps | undefined | null;
 }>;
-export default function NavBar(props: NavBarProps): React.ReactElement;
+export default function MyComponent(props: MyComponentProps): React.ReactElement;

@@ -6,26 +6,11 @@
 
 /* eslint-disable */
 import * as React from "react";
-import {
-  getOverrideProps,
-  getOverridesFromVariants,
-  mergeVariantsAndOverrides,
-  useNavigateAction,
-} from "./utils";
+import { getOverrideProps, useNavigateAction } from "./utils";
 import MyIcon from "./MyIcon";
-import { Button, Flex, View } from "@aws-amplify/ui-react";
+import { Button, Flex } from "@aws-amplify/ui-react";
 export default function NavBar(props) {
-  const { overrides: overridesProp, ...rest } = props;
-  const variants = [
-    {
-      overrides: { MyIcon: {}, "Frame 441": {}, Button: {}, NavBar: {} },
-      variantValues: { property1: "Default" },
-    },
-  ];
-  const overrides = mergeVariantsAndOverrides(
-    getOverridesFromVariants(variants, props),
-    overridesProp || {}
-  );
+  const { overrides, ...rest } = props;
   const buttonOnClick = useNavigateAction({ type: "url", url: "/NewSub" });
   return (
     <Flex
@@ -38,13 +23,12 @@ export default function NavBar(props) {
       position="relative"
       boxShadow="0px 2px 6px rgba(0.05098039284348488, 0.10196078568696976, 0.14901961386203766, 0.15000000596046448)"
       borderRadius="15px"
-      padding="24px 32px 24px 32px"
+      padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
-      display="flex"
       {...getOverrideProps(overrides, "NavBar")}
       {...rest}
     >
-      <View
+      <MyIcon
         width="24px"
         height="24px"
         display="block"
@@ -54,24 +38,9 @@ export default function NavBar(props) {
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
-        {...getOverrideProps(overrides, "Frame 441")}
-      >
-        <MyIcon
-          width="24px"
-          height="24px"
-          display="block"
-          gap="unset"
-          alignItems="unset"
-          justifyContent="unset"
-          overflow="hidden"
-          position="absolute"
-          top="0px"
-          left="-0.5px"
-          padding="0px 0px 0px 0px"
-          type="home"
-          {...getOverrideProps(overrides, "MyIcon")}
-        ></MyIcon>
-      </View>
+        type="home"
+        {...getOverrideProps(overrides, "MyIcon")}
+      ></MyIcon>
       <Button
         width="150px"
         height="29px"
