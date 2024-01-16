@@ -6,14 +6,16 @@
 
 /* eslint-disable */
 import * as React from "react";
+import { getOverrideProps, useNavigateAction } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { deleteSub } from "../graphql/mutations";
-import { getOverrideProps } from "./utils";
 import { Flex, Icon, Image, Text } from "@aws-amplify/ui-react";
 const client = generateClient();
 export default function SubCard(props) {
   const { sub, overrides, ...rest } = props;
-  const vectorFourZeroNineOneSixEightOnClick = async () => {
+  const editOnClick = useNavigateAction({ type: "url", url: "/EditSub" });
+  const deleteOnMouseUp = useNavigateAction({ type: "url", url: "/" });
+  const deleteOnMouseDown = async () => {
     await client.graphql({
       query: deleteSub.replaceAll("__typename", ""),
       variables: {
@@ -147,6 +149,9 @@ export default function SubCard(props) {
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
+          onClick={() => {
+            editOnClick();
+          }}
           {...getOverrideProps(overrides, "edit")}
         >
           <Icon
@@ -180,6 +185,12 @@ export default function SubCard(props) {
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
+          onMouseUp={() => {
+            deleteOnMouseUp();
+          }}
+          onMouseDown={() => {
+            deleteOnMouseDown();
+          }}
           {...getOverrideProps(overrides, "delete")}
         >
           <Icon
@@ -199,9 +210,6 @@ export default function SubCard(props) {
             justifyContent="unset"
             shrink="0"
             position="relative"
-            onClick={() => {
-              vectorFourZeroNineOneSixEightOnClick();
-            }}
             {...getOverrideProps(overrides, "Vector409168")}
           ></Icon>
         </Flex>
