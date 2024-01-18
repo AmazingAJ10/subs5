@@ -27,26 +27,26 @@ export default function SubCard(props) {
   };
   return (
     <Flex
-      gap="0"
+      gap="28px"
       direction="row"
-      width="320px"
-      height="76px"
+      width="304px"
+      height="70px"
       justifyContent="center"
       alignItems="center"
       position="relative"
       boxShadow="0px 2px 6px rgba(0.05098039284348488, 0.10196078568696976, 0.14901961386203766, 0.15000000596046448)"
       borderRadius="15px"
-      padding="0px 0px 0px 0px"
+      padding="0px 14px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
       {...getOverrideProps(overrides, "SubCard")}
       {...rest}
     >
       <Flex
-        gap="10px"
+        gap="100px"
         direction="row"
-        width="unset"
+        width="55px"
         height="unset"
-        justifyContent="center"
+        justifyContent="flex-end"
         alignItems="center"
         shrink="0"
         position="relative"
@@ -72,13 +72,12 @@ export default function SubCard(props) {
       <Flex
         gap="0"
         direction="column"
-        width="161px"
-        height="unset"
+        width="138px"
+        height="70px"
         justifyContent="center"
         alignItems="flex-start"
         overflow="hidden"
         shrink="0"
-        alignSelf="stretch"
         position="relative"
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "Frame 447")}
@@ -127,11 +126,11 @@ export default function SubCard(props) {
         ></Text>
       </Flex>
       <Flex
-        gap="0"
+        gap="8px"
         direction="row"
         width="unset"
         height="unset"
-        justifyContent="center"
+        justifyContent="flex-start"
         alignItems="center"
         shrink="0"
         alignSelf="stretch"
@@ -142,13 +141,13 @@ export default function SubCard(props) {
         <Flex
           gap="0"
           direction="column"
-          width="unset"
+          width="5px"
           height="unset"
           justifyContent="center"
           alignItems="center"
           shrink="0"
           position="relative"
-          padding="0px 0px 0px 0px"
+          padding="0px 9px 0px 9px"
           onClick={() => {
             editOnClick();
           }}
