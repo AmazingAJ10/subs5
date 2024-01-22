@@ -1,7 +1,7 @@
 import React, { Component} from "react";
 import './App.css'
 import { withAuthenticator, ThemeProvider } from "@aws-amplify/ui-react";
-import { EditSub, NavBar, NewSub, SubCard, SubCardCollection, Frame449, Frame447, Buttons } from './ui-components'
+import { EditSub, NavBar, NewSub, SubCard, SubCardCollection } from './ui-components'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 class App extends Component {

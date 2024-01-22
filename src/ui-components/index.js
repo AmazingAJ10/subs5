@@ -4,10 +4,7 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-export { default as Buttons } from "./Buttons";
 export { default as EditSub } from "./EditSub";
-export { default as Frame447 } from "./Frame447";
-export { default as Frame449 } from "./Frame449";
 export { default as MyComponent } from "./MyComponent";
 export { default as MyIcon } from "./MyIcon";
 export { default as NavBar } from "./NavBar";
