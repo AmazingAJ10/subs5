@@ -8,9 +8,10 @@
 import * as React from "react";
 import { getOverrideProps, useNavigateAction } from "./utils";
 import MyIcon from "./MyIcon";
-import { Button, Flex } from "@aws-amplify/ui-react";
+import { Button, Flex, View } from "@aws-amplify/ui-react";
 export default function NavBar(props) {
   const { overrides, ...rest } = props;
+  const frameFourFiveZeroOnClick = useNavigateAction({ type: "url", url: "/" });
   const buttonOnClick = useNavigateAction({ type: "url", url: "/NewSub" });
   return (
     <Flex
@@ -28,19 +29,38 @@ export default function NavBar(props) {
       {...getOverrideProps(overrides, "NavBar")}
       {...rest}
     >
-      <MyIcon
-        width="24px"
-        height="24px"
+      <View
+        width="42px"
+        height="36px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
+        overflow="hidden"
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
-        type="home"
-        {...getOverrideProps(overrides, "MyIcon")}
-      ></MyIcon>
+        backgroundColor="rgba(255,255,255,1)"
+        onClick={() => {
+          frameFourFiveZeroOnClick();
+        }}
+        {...getOverrideProps(overrides, "Frame 450")}
+      >
+        <MyIcon
+          width="24px"
+          height="24px"
+          display="block"
+          gap="unset"
+          alignItems="unset"
+          justifyContent="unset"
+          position="absolute"
+          top="6px"
+          left="9px"
+          padding="0px 0px 0px 0px"
+          type="home"
+          {...getOverrideProps(overrides, "MyIcon")}
+        ></MyIcon>
+      </View>
       <Button
         width="150px"
         height="29px"

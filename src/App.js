@@ -11,8 +11,8 @@ class App extends Component {
           <Router>
             <Routes>
               <Route exact path="/" element={<div><NavBar class="nav"/><SubCardCollection class="collection"/></div>}/>
-              <Route exact path="/NewSub" element={<div><NewSub/></div>}/>
-              <Route exact path="/EditSub" element={<div><EditSub/></div>}/>
+              <Route exact path="/NewSub" element={<div><NavBar class="nav"/><NewSub/></div>}/>
+              <Route exact path="/EditSub" element={<div><NavBar class="nav"/><EditSub/></div>}/>
           </Routes>    
           </Router>
           
