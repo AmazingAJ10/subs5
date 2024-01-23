@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { MyIconProps } from "./MyIcon";
-import { ButtonProps, FlexProps, ViewProps } from "@aws-amplify/ui-react";
+import { ButtonProps, FlexProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -20,7 +20,7 @@ export declare type Variant = {
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type NavBarOverridesProps = {
     NavBar?: PrimitiveOverrideProps<FlexProps>;
-    "Frame 450"?: PrimitiveOverrideProps<ViewProps>;
+    "Frame 450"?: PrimitiveOverrideProps<FlexProps>;
     MyIcon?: MyIconProps;
     Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;

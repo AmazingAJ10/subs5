@@ -10,7 +10,7 @@ class App extends Component {
         <div className="App"><header className="App-header">
           <Router>
             <Routes>
-              <Route exact path="/" element={<div><NavBar class="nav"/><SubCardCollection class="collection"/></div>}/>
+              <Route exact path="/" element={<div><NavBar class="nav2"/><SubCardCollection class="collection"/></div>}/>
               <Route exact path="/NewSub" element={<div><NavBar class="nav"/><NewSub/></div>}/>
               <Route exact path="/EditSub" element={<div><NavBar class="nav"/><EditSub/></div>}/>
           </Routes>    
