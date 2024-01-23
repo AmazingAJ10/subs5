@@ -40,6 +40,7 @@ export default function NewSub(props) {
       },
     });
   };
+  const buttonOnMouseLeave = useNavigateAction({ type: "url", url: "/" });
   return (
     <Flex
       gap="16px"
@@ -209,6 +210,9 @@ export default function NewSub(props) {
           children="ADD"
           onClick={() => {
             buttonOnClick();
+          }}
+          onMouseLeave={() => {
+            buttonOnMouseLeave();
           }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>

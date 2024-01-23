@@ -56,6 +56,7 @@
   float: left;
   margin-left:15px;
   margin-top:12px;
+  border: 0 !important;
 }
 /* .amplify-flex * {
   margin: 0;
@@ -91,6 +92,7 @@
   float: left;
   margin-left:15px;
   margin-top:12px;
+  border: 0 !important;
 }
 .nav2 .amplify-button:hover {
   background-color: #004350;

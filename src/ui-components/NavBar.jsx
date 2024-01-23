@@ -39,7 +39,7 @@ export default function NavBar(props) {
         overflow="hidden"
         shrink="0"
         position="relative"
-        border="0"
+        border="1px SOLID rgba(0,0,0,1)"
         padding="0px 0px 0px 0px"
         backgroundColor="rgba(255,255,255,1)"
         onClick={() => {
