@@ -40,16 +40,17 @@ export default function NewSub(props) {
       },
     });
   };
+  const buttonOnMouseLeave = useNavigateAction({ type: "url", url: "/" });
   return (
     <Flex
       gap="16px"
       direction="column"
-      width="320px"
-      height="616px"
+      width="304px"
+      height="416px"
       justifyContent="flex-start"
       alignItems="flex-start"
       position="relative"
-      borderRadius="15px"
+      borderRadius="0px 0px 15px 15px"
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
       {...getOverrideProps(overrides, "NewSub")}
@@ -209,6 +210,9 @@ export default function NewSub(props) {
           children="ADD"
           onClick={() => {
             buttonOnClick();
+          }}
+          onMouseLeave={() => {
+            buttonOnMouseLeave();
           }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>

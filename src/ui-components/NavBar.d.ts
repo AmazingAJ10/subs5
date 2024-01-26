@@ -20,6 +20,7 @@ export declare type Variant = {
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type NavBarOverridesProps = {
     NavBar?: PrimitiveOverrideProps<FlexProps>;
+    "Frame 450"?: PrimitiveOverrideProps<FlexProps>;
     MyIcon?: MyIconProps;
     Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
