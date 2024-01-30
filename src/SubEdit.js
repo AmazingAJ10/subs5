@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavBar, SubUpdateForm } from "./ui-components";
+import { NavBar, EditSub } from "./ui-components";
 import { useParams } from "react-router-dom";
 import "./App.css";
 
@@ -13,7 +13,7 @@ function SubEdit(){
         return (
             <div><header className="App-header">
             <NavBar/>
-            <SubUpdateForm idProp/>
+            <EditSub idProp={cid}/>
             </header></div>
         );
     }

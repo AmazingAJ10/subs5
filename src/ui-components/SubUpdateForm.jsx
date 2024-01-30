@@ -14,7 +14,7 @@ import { updateSub } from "../graphql/mutations";
 const client = generateClient();
 export default function SubUpdateForm(props) {
   const {
-    idProp,
+    id: idProp,
     sub: subModelProp,
     onSuccess,
     onError,
@@ -24,7 +24,6 @@ export default function SubUpdateForm(props) {
     overrides,
     ...rest
   } = props;
-  console.log("thing update got it: " + {idProp})
   const initialValues = {
     Name: "",
     Price: "",
