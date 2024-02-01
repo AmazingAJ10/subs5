@@ -12,8 +12,8 @@ function SubEdit(){
         console.log("fount it!"+{cid});
         return (
             <div><header className="App-header">
-            <NavBar/>
-            <EditSub idProp={cid}/>
+            <NavBar class="nav"/>
+            <EditSub class="edit" idProp={cid}/>
             </header></div>
         );
     }

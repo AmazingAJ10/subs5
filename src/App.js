@@ -12,8 +12,8 @@ class App extends Component {
           <Router>
             <Routes>
               <Route exact path="/" element={<div><NavBar class="nav2"/><SubCardCollection class="collection"/></div>}/>
-              <Route exact path="/NewSub" element={<div><NavBar class="nav"/><NewSub/></div>}/>
-              <Route exact path="/SubEdit/:cid" element={<SubEdit/>}/>
+              <Route exact path="/new" element={<div><NavBar class="nav"/><NewSub class='new'/></div>}/>
+              <Route exact path="/edit/:cid" element={<SubEdit/>}/>
           </Routes>   
           </Router>
           
@@ -23,5 +23,3 @@ class App extends Component {
 }
 
 export default withAuthenticator(App);
-
-// https://github.com/CSNSE/subs5/issues/

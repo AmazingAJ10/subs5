@@ -5,7 +5,6 @@
  **************************************************************************/
 
 export { default as EditSub } from "./EditSub";
-export { default as MyComponent } from "./MyComponent";
 export { default as MyIcon } from "./MyIcon";
 export { default as NavBar } from "./NavBar";
 export { default as NewSub } from "./NewSub";
