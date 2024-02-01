@@ -23,3 +23,5 @@ class App extends Component {
 }
 
 export default withAuthenticator(App);
+
+//https://github.com/CSNSE/subs5/issues
