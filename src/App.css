@@ -109,3 +109,9 @@
   font-weight: 900;
   border-radius: 10px;
 }
+.edit .amplify-text{
+  margin-left: 28px;
+}
+.new .amplify-text{
+  margin-left: 28px;
+}

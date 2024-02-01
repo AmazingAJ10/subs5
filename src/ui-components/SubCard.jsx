@@ -13,7 +13,10 @@ import { Flex, Icon, Image, Text } from "@aws-amplify/ui-react";
 const client = generateClient();
 export default function SubCard(props) {
   const { sub, overrides, ...rest } = props;
-  const editOnClick = useNavigateAction({ type: "url", url: "/EditSub" });
+  const editOnClick = useNavigateAction({
+    type: "url",
+    url: `${"/edit/"}${sub?.id}`,
+  });
   const deleteOnMouseUp = useNavigateAction({ type: "url", url: "/" });
   const deleteOnMouseDown = async () => {
     await client.graphql({
