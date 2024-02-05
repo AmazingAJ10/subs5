@@ -10,7 +10,7 @@ import { getOverrideProps, useNavigateAction } from "./utils";
 import MyIcon from "./MyIcon";
 import { Button, Flex } from "@aws-amplify/ui-react";
 export default function NavBar(props) {
-  const { overrides, ...rest } = props;
+  const { subR, overrides, ...rest } = props;
   const frameFourFiveZeroOnClick = useNavigateAction({ type: "url", url: "/" });
   const buttonOnClick = useNavigateAction({ type: "url", url: "/new" });
   return (

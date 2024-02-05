@@ -110,8 +110,26 @@
   border-radius: 10px;
 }
 .edit .amplify-text{
-  margin-left: 28px;
+  margin-left: 7px;
 }
 .new .amplify-text{
   margin-left: 28px;
+}
+.edit .amplify-button {
+  background-color: #047d95;
+  transition: all .25s;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  font-weight: 900;
+  border-radius: 10px;
+  top: 340px;
+  right: 180px;
+}
+.edit .amplify-button:hover {
+  background-color: #004350;
+}
+.edit .amplify-flex{
+  left: 10px;
 }

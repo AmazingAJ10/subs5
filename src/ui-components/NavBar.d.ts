@@ -25,6 +25,8 @@ export declare type NavBarOverridesProps = {
     Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type NavBarProps = React.PropsWithChildren<Partial<FlexProps> & {
+    subR?: any;
+} & {
     overrides?: NavBarOverridesProps | undefined | null;
 }>;
 export default function NavBar(props: NavBarProps): React.ReactElement;
