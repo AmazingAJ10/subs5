@@ -16,16 +16,13 @@
 }
 .App-header {
   align-items: center;
-  background-color: #282c34;
+  background-color: #fdfdff;
   color: #fff;
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   justify-content: center;
   min-height: 100vh;
-}
-.amplify-flex {
-  
 }
 
 .App-link {
@@ -132,4 +129,32 @@
 }
 .edit .amplify-flex{
   left: 10px;
+}
+.editInfo .amplify-input .amplify-field-group__control{
+  initial-value:"this";
+}
+.create{
+  box-shadow: #e8e8e8 0px 2px 6px;
+  border-radius: 0px 0px 15px 15px;
+}
+.nav3 > .amplify-flex {
+  float: left;
+  margin-left:15px;
+  margin-top:12px;
+  border: 0 !important;
+}
+.nav3 .amplify-button {
+  background-color: #047d95;
+  transition: all .25s;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-weight: 900;
+  border-radius: 10px;
+}
+.nav3 .amplify-button:hover {
+  background-color: #004350;
 }
