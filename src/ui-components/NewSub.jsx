@@ -11,6 +11,12 @@ import { getOverrideProps, useNavigateAction } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createSub } from "../graphql/mutations";
 import MyIcon from "./MyIcon";
+import { StorageManager } from "@aws-amplify/ui-react-storage";
+import {
+  fetchByPath,
+  processFile,
+  validateField,
+} from "./utils";
 import { Button, Flex, Text, TextField, View } from "@aws-amplify/ui-react";
 const client = generateClient();
 export default function NewSub(props) {
@@ -182,23 +188,45 @@ export default function NewSub(props) {
             }}
             {...getOverrideProps(overrides, "TextField4046444")}
           ></TextField>
-          <TextField
-            width="unset"
-            height="unset"
-            label="Subscription Logo"
-            placeholder="upload image"
-            shrink="0"
-            alignSelf="stretch"
-            size="default"
-            isDisabled={false}
-            labelHidden={false}
-            variation="default"
-            value={textFieldFourZeroFourSixFourFourFiveValue}
-            onChange={(event) => {
-              setTextFieldFourZeroFourSixFourFourFiveValue(event.target.value);
-            }}
-            {...getOverrideProps(overrides, "TextField4046445")}
-          ></TextField>
+           <StorageManager
+          onUploadSuccess={({ key }) => {
+            setField0((prev) => {
+              let value = key;
+              if (onChange) {
+                const modelFields = {
+                  Name,
+                  Price,
+                  Field0: value,
+                };
+                const result = onChange(modelFields);
+                value = result?.Field0 ?? value;
+              }
+              return value;
+            });
+          }}
+          onFileRemove={({ key }) => {
+            setField0((prev) => {
+              let value = initialValues?.Field0;
+              if (onChange) {
+                const modelFields = {
+                  Name,
+                  Price,
+                  Field0: value,
+                };
+                const result = onChange(modelFields);
+                value = result?.Field0 ?? value;
+              }
+              return value;
+            });
+          }}
+          processFile={processFile}
+          accessLevel={"private"}
+          acceptedFileTypes={[]}
+          isResumable={false}
+          showThumbnails={true}
+          maxFileCount={1}
+          {...getOverrideProps(overrides, "Field0")}
+        ></StorageManager>
         </Flex>
         <Button
           width="unset"
