@@ -172,6 +172,7 @@ export default function EditSub({ idProp, overrides, ...rest }) {
           <TextField
             label="Subscription Name"
             value={name}
+            placeholder={subscription?.name}
             onChange={(event) => setName(event.target.value)}
             {...getOverrideProps(overrides, "TextField4046328")}
           ></TextField>

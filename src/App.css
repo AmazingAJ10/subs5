@@ -106,9 +106,9 @@
   font-weight: 900;
   border-radius: 10px;
 }
-/* .edit .amplify-text{
+.edit .amplify-text{
   margin-left: 7px;
-} */
+}
 .create .amplify-text{
   margin-left: 28px;
 }
@@ -127,9 +127,9 @@
 .edit .amplify-button:hover {
   background-color: #004350;
 }
-/* .edit .amplify-flex{
+.edit .amplify-flex{
   left: 10px;
-} */
+}
 .editInfo .amplify-input .amplify-field-group__control{
   initial-value:"this";
 }

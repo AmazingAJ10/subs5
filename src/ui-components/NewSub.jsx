@@ -1,10 +1,3 @@
-/***************************************************************************
- * The contents of this file were generated with Amplify Studio.           *
- * Please refrain from making any modifications to this file.              *
- * Any changes to this file will be overwritten when running amplify pull. *
- **************************************************************************/
-
-/* eslint-disable */
 import * as React from "react";
 import { useState } from "react";
 import { getOverrideProps, useNavigateAction } from "./utils";
@@ -12,28 +5,19 @@ import { generateClient } from "aws-amplify/api";
 import { createSub } from "../graphql/mutations";
 import MyIcon from "./MyIcon";
 import { StorageManager } from "@aws-amplify/ui-react-storage";
-import {
-  fetchByPath,
-  processFile,
-  validateField,
-} from "./utils";
+import { fetchByPath, processFile, validateField } from "./utils";
 import { Button, Flex, Text, TextField, View } from "@aws-amplify/ui-react";
+import { v4 as uuidv4 } from 'uuid'; // Ensure you've installed uuid
+
 const client = generateClient();
+
 export default function NewSub(props) {
   const { overrides, ...rest } = props;
-  const [
-    textFieldFourZeroFourSixFourFourThreeValue,
-    setTextFieldFourZeroFourSixFourFourThreeValue,
-  ] = useState("");
-  const [
-    textFieldFourZeroFourSixFourFourFourValue,
-    setTextFieldFourZeroFourSixFourFourFourValue,
-  ] = useState("");
-  const [
-    textFieldFourZeroFourSixFourFourFiveValue,
-    setTextFieldFourZeroFourSixFourFourFiveValue,
-  ] = useState("");
+  const [textFieldFourZeroFourSixFourFourThreeValue, setTextFieldFourZeroFourSixFourFourThreeValue] = useState("");
+  const [textFieldFourZeroFourSixFourFourFourValue, setTextFieldFourZeroFourSixFourFourFourValue] = useState("");
+  const [textFieldFourZeroFourSixFourFourFiveValue, setTextFieldFourZeroFourSixFourFourFiveValue] = useState("");
   const frameFourFourFourOnClick = useNavigateAction({ type: "url", url: "/" });
+  
   const buttonOnClick = async () => {
     await client.graphql({
       query: createSub.replaceAll("__typename", ""),
@@ -46,7 +30,9 @@ export default function NewSub(props) {
       },
     });
   };
+  
   const buttonOnMouseLeave = useNavigateAction({ type: "url", url: "/" });
+
   return (
     <Flex
       gap="16px"
@@ -188,45 +174,20 @@ export default function NewSub(props) {
             }}
             {...getOverrideProps(overrides, "TextField4046444")}
           ></TextField>
-           <StorageManager
-          onUploadSuccess={({ key }) => {
-            setField0((prev) => {
-              let value = key;
-              if (onChange) {
-                const modelFields = {
-                  Name,
-                  Price,
-                  Field0: value,
-                };
-                const result = onChange(modelFields);
-                value = result?.Field0 ?? value;
-              }
-              return value;
-            });
-          }}
-          onFileRemove={({ key }) => {
-            setField0((prev) => {
-              let value = initialValues?.Field0;
-              if (onChange) {
-                const modelFields = {
-                  Name,
-                  Price,
-                  Field0: value,
-                };
-                const result = onChange(modelFields);
-                value = result?.Field0 ?? value;
-              }
-              return value;
-            });
-          }}
-          processFile={processFile}
-          accessLevel={"private"}
-          acceptedFileTypes={[]}
-          isResumable={false}
-          showThumbnails={true}
-          maxFileCount={1}
-          {...getOverrideProps(overrides, "Field0")}
-        ></StorageManager>
+          <StorageManager
+            onUploadSuccess={({ key }) => {
+              const uniqueFileKey = `uploads/${uuidv4()}`; // Generate a unique key for S3
+              setTextFieldFourZeroFourSixFourFourFiveValue(uniqueFileKey);
+              // Note: Ensure the file is uploaded to S3 using this uniqueFileKey
+            }}
+            processFile={processFile}
+            accessLevel={"private"}
+            acceptedFileTypes={[]}
+            isResumable={false}
+            showThumbnails={true}
+            maxFileCount={1}
+            {...getOverrideProps(overrides, "Field0")}
+          ></StorageManager>
         </Flex>
         <Button
           width="unset"
