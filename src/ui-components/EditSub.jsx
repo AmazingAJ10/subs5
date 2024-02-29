@@ -6,16 +6,81 @@ import { updateSub } from "../graphql/mutations";
 import MyIcon from "./MyIcon";
 import { Button, Flex, Text, TextField, View } from "@aws-amplify/ui-react";
 import {getSub} from "../graphql/queries";
+import { Field } from "@aws-amplify/ui-react/internal";
+import { StorageManager } from "@aws-amplify/ui-react-storage";
+import { fetchByPath, validateField, processFile} from "./utils";
 
 const client = generateClient();
-
-export default function EditSub({ idProp, overrides, ...rest }) {
-  // Initialize state for each of the input fields
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [logo, setLogo] = useState("");
-  // Navigation action to return to home screen after updating
-  const navigateToHome = useNavigateAction({ type: "url", url: "/" });
+export default function EditSub(props) {
+  const {
+    idProp,
+    sub: subModelProp,
+    onSuccess,
+    onError,
+    onSubmit,
+    onValidate,
+    onChange,
+    overrides,
+    ...rest
+  } = props;
+  const initialValues = {
+    Name: "",
+    Price: "",
+    Logo: "",
+  };
+  const [Name, setName] = React.useState(initialValues.Name);
+  const [Price, setPrice] = React.useState(initialValues.Price);
+  const [Logo, setLogo] = React.useState(initialValues.Logo);
+  const [errors, setErrors] = React.useState({});
+  const resetStateValues = () => {
+    const cleanValues = subRecord
+      ? { ...initialValues, ...subRecord }
+      : initialValues;
+    setName(cleanValues.Name);
+    setPrice(cleanValues.Price);
+    setLogo(cleanValues.Logo);
+    setErrors({});
+  };
+  const [subRecord, setSubRecord] = React.useState(subModelProp);
+  React.useEffect(() => {
+    const queryData = async () => {
+      const record = idProp
+        ? (
+            await client.graphql({
+              query: getSub.replaceAll("__typename", ""),
+              variables: { id: idProp },
+            })
+          )?.data?.getSub
+        : subModelProp;
+      setSubRecord(record);
+    };
+    queryData();
+  }, [idProp, subModelProp]);
+  React.useEffect(resetStateValues, [subRecord]);
+  const validations = {
+    Name: [],
+    Price: [],
+    Logo: [],
+  };
+  const runValidationTasks = async (
+    fieldName,
+    currentValue,
+    getDisplayValue
+  ) => {
+    const value =
+      currentValue && getDisplayValue
+        ? getDisplayValue(currentValue)
+        : currentValue;
+    let validationResponse = validateField(value, validations[fieldName]);
+    const customValidator = fetchByPath(onValidate, fieldName);
+    if (customValidator) {
+      validationResponse = await customValidator(value, validationResponse);
+    }
+    setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }));
+    return validationResponse;
+  };
+  
+   const navigateToHome = useNavigateAction({ type: "url", url: "/" });
 
   // Function to handle the update button click
   const buttonOnClick = async () => {
@@ -25,9 +90,9 @@ export default function EditSub({ idProp, overrides, ...rest }) {
         variables: {
           input: {
             id: idProp,
-            Name: name,
-            Price: price,
-            Logo: logo,
+            Name: Name,
+            Price: Price,
+            Logo: Logo,
           },
         },
       });
@@ -37,32 +102,6 @@ export default function EditSub({ idProp, overrides, ...rest }) {
       console.error("Error updating subscription:", error);
     }
   };
-
-  // Effect to fetch subscription details when component mounts or idProp changes
-  useEffect(() => {
-    const fetchSubscriptionDetails = async () => {
-      try {
-        // Placeholder: Implement your logic to fetch subscription details by idProp
-        console.log("hello");
-        const details = await client.graphql(getSub, { id: idProp });
-        const subscription = details.data.getSubscription;
-        console.log("sub=" +subscription);
-        console.log(subscription?.Name);
-        
-        if (subscription) {
-          setName(subscription.Name);
-          setPrice(subscription.Price);
-          setLogo(subscription.Logo);
-        }
-      } catch (error) {
-        console.error("Error fetching subscription details:", error);
-      }
-    };
-      console.log("id"+idProp);
-    if (idProp) {
-      fetchSubscriptionDetails();
-    }
-  }, [idProp]);
 
   return (
     <Flex
@@ -171,23 +210,43 @@ export default function EditSub({ idProp, overrides, ...rest }) {
         >
           <TextField
             label="Subscription Name"
-            value={name}
-            placeholder={subscription?.name}
+            value={Name}
             onChange={(event) => setName(event.target.value)}
             {...getOverrideProps(overrides, "TextField4046328")}
           ></TextField>
           <TextField
             label="Price"
-            value={price}
+            value={Price}
             onChange={(event) => setPrice(event.target.value)}
             {...getOverrideProps(overrides, "TextField4046329")}
           ></TextField>
-          <TextField
+          {<TextField
             label="Subscription Logo"
-            value={logo}
+            value={Logo}
             onChange={(event) => setLogo(event.target.value)}
             {...getOverrideProps(overrides, "TextField4046331")}
-          ></TextField>
+          ></TextField>} 
+          
+          {/* <Field             // This is Storage Manager to upload images which I will try later.
+          label={"Image"}
+          isRequired={false}
+          isReadOnly={false}
+          >
+          <StorageManager
+          onUploadSuccess={({ key }) => {
+            setLogo(
+              key
+            );
+          }}
+          processFile={processFile}
+          accessLevel={"public"}
+          acceptedFileTypes={[]}
+          isResumable={false}
+          showThumbnails={true}
+          maxFileCount={1}
+          {...getOverrideProps(overrides, "image")}
+          ></StorageManager>
+          </Field> */}
         </Flex>
         <Button
           children="Update"

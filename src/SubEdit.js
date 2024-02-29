@@ -9,7 +9,7 @@ function SubEdit(){
 
     function Put(){
         const { cid } = useParams();
-        console.log("fount it!"+cid);
+        // console.log("fount it!"+cid);
         return (
             <div><header className="App-header">
             <NavBar class="nav"/>

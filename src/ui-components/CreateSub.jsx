@@ -72,8 +72,6 @@ export default function CreateSub(props) {
       rowGap="15px"
       columnGap="15px"
       padding="20px"
-      box-shadow="#e8e8e8 0px 2px 6px"
-      border-radius = "0px 0px 15px 15px"
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {

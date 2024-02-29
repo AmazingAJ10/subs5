@@ -1,23 +1,33 @@
+/***************************************************************************
+ * The contents of this file were generated with Amplify Studio.           *
+ * Please refrain from making any modifications to this file.              *
+ * Any changes to this file will be overwritten when running amplify pull. *
+ **************************************************************************/
+
+/* eslint-disable */
 import * as React from "react";
 import { useState } from "react";
 import { getOverrideProps, useNavigateAction } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createSub } from "../graphql/mutations";
 import MyIcon from "./MyIcon";
-import { StorageManager } from "@aws-amplify/ui-react-storage";
-import { fetchByPath, processFile, validateField } from "./utils";
 import { Button, Flex, Text, TextField, View } from "@aws-amplify/ui-react";
-import { v4 as uuidv4 } from 'uuid'; // Ensure you've installed uuid
-
 const client = generateClient();
-
 export default function NewSub(props) {
   const { overrides, ...rest } = props;
-  const [textFieldFourZeroFourSixFourFourThreeValue, setTextFieldFourZeroFourSixFourFourThreeValue] = useState("");
-  const [textFieldFourZeroFourSixFourFourFourValue, setTextFieldFourZeroFourSixFourFourFourValue] = useState("");
-  const [textFieldFourZeroFourSixFourFourFiveValue, setTextFieldFourZeroFourSixFourFourFiveValue] = useState("");
+  const [
+    textFieldFourZeroFourSixFourFourThreeValue,
+    setTextFieldFourZeroFourSixFourFourThreeValue,
+  ] = useState("");
+  const [
+    textFieldFourZeroFourSixFourFourFourValue,
+    setTextFieldFourZeroFourSixFourFourFourValue,
+  ] = useState("");
+  const [
+    textFieldFourZeroFourSixFourFourFiveValue,
+    setTextFieldFourZeroFourSixFourFourFiveValue,
+  ] = useState("");
   const frameFourFourFourOnClick = useNavigateAction({ type: "url", url: "/" });
-  
   const buttonOnClick = async () => {
     await client.graphql({
       query: createSub.replaceAll("__typename", ""),
@@ -30,9 +40,7 @@ export default function NewSub(props) {
       },
     });
   };
-  
   const buttonOnMouseLeave = useNavigateAction({ type: "url", url: "/" });
-
   return (
     <Flex
       gap="16px"
@@ -174,20 +182,23 @@ export default function NewSub(props) {
             }}
             {...getOverrideProps(overrides, "TextField4046444")}
           ></TextField>
-          <StorageManager
-            onUploadSuccess={({ key }) => {
-              const uniqueFileKey = `uploads/${uuidv4()}`; // Generate a unique key for S3
-              setTextFieldFourZeroFourSixFourFourFiveValue(uniqueFileKey);
-              // Note: Ensure the file is uploaded to S3 using this uniqueFileKey
+          <TextField
+            width="unset"
+            height="unset"
+            label="Subscription Logo"
+            placeholder="upload image"
+            shrink="0"
+            alignSelf="stretch"
+            size="default"
+            isDisabled={false}
+            labelHidden={false}
+            variation="default"
+            value={textFieldFourZeroFourSixFourFourFiveValue}
+            onChange={(event) => {
+              setTextFieldFourZeroFourSixFourFourFiveValue(event.target.value);
             }}
-            processFile={processFile}
-            accessLevel={"private"}
-            acceptedFileTypes={[]}
-            isResumable={false}
-            showThumbnails={true}
-            maxFileCount={1}
-            {...getOverrideProps(overrides, "Field0")}
-          ></StorageManager>
+            {...getOverrideProps(overrides, "TextField4046445")}
+          ></TextField>
         </Flex>
         <Button
           width="unset"
