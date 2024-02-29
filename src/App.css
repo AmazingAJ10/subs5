@@ -24,9 +24,6 @@
   justify-content: center;
   min-height: 100vh;
 }
-.amplify-flex {
-  
-}
 
 .App-link {
   color: #61dafb;
@@ -110,8 +107,54 @@
   border-radius: 10px;
 }
 .edit .amplify-text{
+  margin-left: 7px;
+}
+.create .amplify-text{
   margin-left: 28px;
 }
-.new .amplify-text{
-  margin-left: 28px;
+.edit .amplify-button {
+  background-color: #047d95;
+  transition: all .25s;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  font-weight: 900;
+  border-radius: 10px;
+  top: 340px;
+  right: 180px;
+}
+.edit .amplify-button:hover {
+  background-color: #004350;
+}
+.edit .amplify-flex{
+  left: 10px;
+}
+.editInfo .amplify-input .amplify-field-group__control{
+  initial-value:"this";
+}
+.create{
+  border-radius: 0px 0px 15px 15px;
+  background-color: #ffffff;
+}
+.nav3 > .amplify-flex {
+  float: left;
+  margin-left:15px;
+  margin-top:12px;
+  border: 0 !important;
+}
+.nav3 .amplify-button {
+  background-color: #047d95;
+  transition: all .25s;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-weight: 900;
+  border-radius: 10px;
+}
+.nav3 .amplify-button:hover {
+  background-color: #004350;
 }
