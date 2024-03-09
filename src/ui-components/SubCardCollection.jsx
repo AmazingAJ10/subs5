@@ -57,8 +57,8 @@ export default function SubCardCollection(props) {
         variables["nextToken"] = newNext;
       }
 
-      try {
-        result = (await client.graphql({
+      
+      const result = (await client.graphql({
           query: listSubs.replaceAll("__typename", ""),
           variables,
         })).data.listSubs;
@@ -66,8 +66,9 @@ export default function SubCardCollection(props) {
         newNext = result.nextToken;
 
         // Handling images asynchronously
-        const subsWithImages = await Promise.all(
-          result.items.map(async (sub) => {
+        const subsFromAPI = result.items
+        await Promise.all(
+          subsFromAPI.map(async (sub) => {
             if (sub.image) {
               const getUrlResult = await getUrl({ key: sub.image });
               sub.image = getUrlResult.url;
@@ -76,14 +77,7 @@ export default function SubCardCollection(props) {
           })
         );
 
-        // Ensure the updated items with images are pushed
-        apiCache[instanceKey].push(...subsWithImages);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-        return; // Exit if there's an error
-      }
-    }
+        }
 
     const cacheSlice = isPaginated
       ? newCache.slice((page - 1) * pageSize, page * pageSize)

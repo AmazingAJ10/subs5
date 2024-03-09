@@ -26,8 +26,8 @@ export default function NewSub(props) {
     setTextFieldFourZeroFourSixFourFourFourValue,
   ] = useState("");
   const [
-    textFieldFourZeroFourSixFourFourFiveValue,
-    setTextFieldFourZeroFourSixFourFourFiveValue,
+    imageName,
+    setImageName,
   ] = useState("");
   const frameFourFourFourOnClick = useNavigateAction({ type: "url", url: "/" });
   const buttonOnClick = async () => {
@@ -37,7 +37,7 @@ export default function NewSub(props) {
         input: {
           Name: textFieldFourZeroFourSixFourFourThreeValue,
           Price: textFieldFourZeroFourSixFourFourFourValue,
-          Logo: textFieldFourZeroFourSixFourFourFiveValue,
+          Logo: imageName,
         },
       },
     });
@@ -184,7 +184,7 @@ export default function NewSub(props) {
             }}
             {...getOverrideProps(overrides, "TextField4046444")}
           ></TextField>
-           <StorageManager
+           {/* <StorageManager
             onUploadSuccess={({ key }) => {
               const uniqueFileKey = `uploads/${uuidv4()}`; // Generate a unique key for S3
               setTextFieldFourZeroFourSixFourFourFiveValue(uniqueFileKey);
@@ -198,7 +198,28 @@ export default function NewSub(props) {
             maxFileCount={1}
             {...getOverrideProps(overrides, "Field0")}
           ></StorageManager>
-          
+           */}
+            <Field
+
+            label={"Image"}
+            isRequired={false}
+            isReadOnly={false}
+            >
+            <StorageManager
+              onUploadSuccess={({ key }) => {
+                setImageName(
+                  key
+                );
+              }}
+              processFile={processFile}
+              accessLevel={"public"}
+              acceptedFileTypes={[]}
+              isResumable={false}
+              showThumbnails={true}
+              maxFileCount={1}
+              {...getOverrideProps(overrides, "imageName")}
+            ></StorageManager>
+            </Field>
         </Flex>
         <Button
           width="unset"
