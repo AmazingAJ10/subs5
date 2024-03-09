@@ -227,7 +227,7 @@ export default function EditSub(props) {
             {...getOverrideProps(overrides, "TextField4046331")}
           ></TextField>} 
           
-          {/* <Field             // This is Storage Manager to upload images which I will try later.
+          <Field             // This is Storage Manager to upload images which I will try later.
           label={"Image"}
           isRequired={false}
           isReadOnly={false}
@@ -246,7 +246,7 @@ export default function EditSub(props) {
           maxFileCount={1}
           {...getOverrideProps(overrides, "image")}
           ></StorageManager>
-          </Field> */}
+          </Field>  
         </Flex>
         <Button
           children="Update"

@@ -7,10 +7,12 @@
 /* eslint-disable */
 import * as React from "react";
 import { useState } from "react";
-import { getOverrideProps, useNavigateAction } from "./utils";
+import { getOverrideProps, useNavigateAction, processFile } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { createSub } from "../graphql/mutations";
 import MyIcon from "./MyIcon";
+import { Field } from "@aws-amplify/ui-react/internal";
+import { StorageManager } from "@aws-amplify/ui-react-storage";
 import { Button, Flex, Text, TextField, View } from "@aws-amplify/ui-react";
 const client = generateClient();
 export default function NewSub(props) {
@@ -182,23 +184,21 @@ export default function NewSub(props) {
             }}
             {...getOverrideProps(overrides, "TextField4046444")}
           ></TextField>
-          <TextField
-            width="unset"
-            height="unset"
-            label="Subscription Logo"
-            placeholder="upload image"
-            shrink="0"
-            alignSelf="stretch"
-            size="default"
-            isDisabled={false}
-            labelHidden={false}
-            variation="default"
-            value={textFieldFourZeroFourSixFourFourFiveValue}
-            onChange={(event) => {
-              setTextFieldFourZeroFourSixFourFourFiveValue(event.target.value);
+           <StorageManager
+            onUploadSuccess={({ key }) => {
+              const uniqueFileKey = `uploads/${uuidv4()}`; // Generate a unique key for S3
+              setTextFieldFourZeroFourSixFourFourFiveValue(uniqueFileKey);
+              // Note: Ensure the file is uploaded to S3 using this uniqueFileKey
             }}
-            {...getOverrideProps(overrides, "TextField4046445")}
-          ></TextField>
+            processFile={processFile}
+            accessLevel={"private"}
+            acceptedFileTypes={[]}
+            isResumable={false}
+            showThumbnails={true}
+            maxFileCount={1}
+            {...getOverrideProps(overrides, "Field0")}
+          ></StorageManager>
+          
         </Flex>
         <Button
           width="unset"
