@@ -220,12 +220,12 @@ export default function EditSub(props) {
             onChange={(event) => setPrice(event.target.value)}
             {...getOverrideProps(overrides, "TextField4046329")}
           ></TextField>
-          {<TextField
+          {/* <TextField
             label="Subscription Logo"
             value={Logo}
             onChange={(event) => setLogo(event.target.value)}
             {...getOverrideProps(overrides, "TextField4046331")}
-          ></TextField>} 
+          ></TextField>  */}
           
           <Field             // This is Storage Manager to upload images which I will try later.
           label={"Image"}
@@ -249,6 +249,9 @@ export default function EditSub(props) {
           </Field>  
         </Flex>
         <Button
+        //This was very cool. Didn't think it would work. Took this class with
+        // prebuilt button style from functioning button and worked perfectly.
+        class="amplify-button amplify-field-group__control amplify-button--primary amplify-button--default"
           children="Update"
           onClick={buttonOnClick}
           {...getOverrideProps(overrides, "Button")}

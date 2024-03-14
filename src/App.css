@@ -112,7 +112,7 @@
 .create .amplify-text{
   margin-left: 28px;
 }
-.edit .amplify-button {
+/* .edit .amplify-button {
   background-color: #047d95;
   transition: all .25s;
   border: 0;
@@ -123,7 +123,7 @@
   border-radius: 10px;
   top: 340px;
   right: 180px;
-}
+} */
 .edit .amplify-button:hover {
   background-color: #004350;
 }
@@ -157,4 +157,24 @@
 }
 .nav3 .amplify-button:hover {
   background-color: #004350;
+}
+.create .amplify-storagemanager__dropzone{
+  width: 256px;
+  padding: 0;
+}
+.create .amplify-flex{
+  gap: 8px !important;
+  padding-top: 0px !important;
+}
+.edit .amplify-flex{
+  gap: 8px !important;
+  padding-top: 0px !important;
+}
+.edit .amplify-storagemanager__dropzone{
+  width: 215px;
+  height: 137px;
+  padding: 0;
+}
+.edit .amplify-button{
+  margin-left: 10px;
 }
